@@ -30,8 +30,8 @@
 ## How To Use
    
    As introduced in "Genetic-Structure-Tools".
-   source("plotSTR.r")
-   plotSTR("filename.csv")
+   - source("plotSTR.r")
+   - plotSTR("filename.csv")
 
 
 ## References
