@@ -48,11 +48,9 @@ mdata<-melt(data)
 names(mdata)<-c("Sample","Species","Probability")
 mdata$Sample<-factor(mdata$Sample,levels=mdata$Sample)
 
-'''
-Manully set color for each cluster.
-Delete X-axis texts.
-Delete X/Y-axis names. 
-'''
+#Manully set color for each cluster.
+#Delete X-axis texts.
+#Delete X/Y-axis names. 
 p<-ggplot(mdata,aes(x=Sample,y=Probability,fill=Species)) + geom_bar(stat="identity",position="stack") + scale_fill_manual(values=c("Cluster1"="navy", "Cluster2"="yellow", "Cluster3"="#7F405F", "Cluster4"="springgreen", "Cluster5"="lightgray")) +
 theme_classic() + 
 theme(axis.line=element_blank(),axis.ticks=element_blank(),axis.text.x=element_blank(),axis.text.y=element_text(size=20, face="bold"),legend.position="none") +
