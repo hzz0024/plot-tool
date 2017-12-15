@@ -1,3 +1,4 @@
+
 library(reshape)
 library(stringr)
 library(ggplot2)
@@ -51,12 +52,14 @@ mdata$Sample<-factor(mdata$Sample,levels=mdata$Sample)
 #Manully set color for each cluster.
 #Delete X-axis texts.
 #Delete X/Y-axis names. 
-p<-ggplot(mdata,aes(x=Sample,y=Probability,fill=Species)) + geom_bar(stat="identity",position="stack") + scale_fill_manual(values=c("Cluster1"="navy", "Cluster2"="yellow", "Cluster3"="#7F405F", "Cluster4"="springgreen", "Cluster5"="lightgray")) +
+p<-ggplot(mdata,aes(x=Sample,y=Probability,fill=Species)) + geom_bar(stat="identity",position="stack") + scale_fill_manual(values=c("Cluster1"="navy", "Cluster2"="yellow", "Cluster3"="#7F405F", "Cluster4"="lightpink", "Cluster5"="lightgray")) +
 theme_classic() + 
-theme(axis.line=element_blank(),axis.ticks=element_blank(),axis.text.x=element_blank(),axis.text.y=element_text(size=20, face="bold"),legend.position="none") +
-theme(axis.ticks.y=element_line(size=1,color = "black")) +
+theme(axis.line=element_blank(),axis.ticks.x=element_blank(),axis.text.x=element_blank(),axis.text.y=element_text(size=30, face="bold",colour = "black"),legend.position="none") +
+theme(axis.ticks.y = element_line(size=1, color="black"), axis.ticks.length=unit(8,'mm') ) +
+scale_y_continuous(breaks=c(0.0,0.2,0.4,0.6,0.8,1.0),labels = c("0.00","0.20","0.40","0.60","0.80","1.00"))+
+annotate(x=0, xend=0, y=0, yend=1, colour="black", lwd=2, geom="segment")+
 labs(x="",y="")
 print(p)
-ggsave(paste("k",nclust,"STRplot.pdf",sep=""),width = 20, height = 9)
+ggsave(paste("k",nclust,"STRplot.pdf",sep=""),width = 44.8, height = 8.4)
 options(warn = oldw)
 }
